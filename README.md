@@ -1,31 +1,10 @@
-# Chatbot UI
-
-## News
-
-Chatbot UI 2.0 is out as an updated, hosted product!
-
-Check out [Takeoff Chat](https://www.takeoffchat.com/).
-
-Open source version coming soon!
+# CJ’s Entertainment and Media Chatbot System
 
 ## About
 
-Chatbot UI is an open source chat UI for AI models.
+See a [demo]().
 
-See a [demo](https://twitter.com/mckaywrigley/status/1640380021423603713?s=46&t=AowqkodyK6B4JccSOxSPew).
-
-![Chatbot UI](./public/screenshots/screenshot-0402023.jpg)
-
-## Updates
-
-Chatbot UI will be updated over time.
-
-Expect frequent improvements.
-
-**Next up:**
-
-- [ ] Sharing
-- [ ] "Bots"
+![Chatbot UI](./public/screenshots/)
 
 ## Deploy
 
@@ -72,10 +51,6 @@ Create a .env.local file in the root of the repo with your OpenAI API Key:
 OPENAI_API_KEY=YOUR_KEY
 ```
 
-> You can set `OPENAI_API_HOST` where access to the official OpenAI host is restricted or unavailable, allowing users to configure an alternative host for their specific needs.
-
-> Additionally, if you have multiple OpenAI Organizations, you can set `OPENAI_ORGANIZATION` to specify one.
-
 **4. Run App**
 
 ```bash
@@ -85,6 +60,19 @@ npm run dev
 **5. Use It**
 
 You should be able to start chatting.
+
+**6. More information**
+
+| Script | Command |
+| --- | --- |
+| dev | next dev |
+| build | next build |
+| start | next start |
+| lint | next lint |
+| format | prettier --write . |
+| test | vitest |
+| coverage | vitest run --coverage |
+
 
 ## Configuration
 
@@ -103,13 +91,41 @@ When deploying the application, the following environment variables can be set:
 | NEXT_PUBLIC_DEFAULT_TEMPERATURE   | 1                              | The default temperature to use on new conversations                                                                                       |
 | GOOGLE_API_KEY                    |                                | See [Custom Search JSON API documentation][GCSE]                                                                                          |
 | GOOGLE_CSE_ID                     |                                | See [Custom Search JSON API documentation][GCSE]                                                                                          |
+## Project Details
 
-If you do not provide an OpenAI API key with `OPENAI_API_KEY`, users will have to provide their own key.
+| Name | Version |
+| --- | --- |
+| cj-ai-chatbot | 0.1.0 |
 
-If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
+## Dependencies
 
-## Contact
+| Package | Version |
+| --- | --- |
+| @dqbd/tiktoken | ^1.0.2 |
+| @tabler/icons-react | ^2.9.0 |
+| eventsource-parser | ^0.1.0 |
+| i18next | ^22.4.13 |
+| next | 13.2.4 |
+| next-i18next | ^13.2.2 |
+| openai | ^3.2.1 |
+| react | 18.2.0 |
+| react-dom | 18.2.0 |
+| react-hot-toast | ^2.4.0 |
+| react-i18next | ^12.2.0 |
+| react-markdown | ^8.0.5 |
+| react-query | ^3.39.3 |
+| react-syntax-highlighter | ^15.5.0 |
+| rehype-mathjax | ^4.0.2 |
+| remark-gfm | ^3.0.1 |
+| remark-math | ^5.1.1 |
+| uuid | ^9.0.0 |
 
-If you have any questions, feel free to reach out to Mckay on [Twitter](https://twitter.com/mckaywrigley).
+## Dev Dependencies
 
-[GCSE]: https://developers.google.com/custom-search/v1/overview
+| Package | Version |
+| --- | --- |
+| @mozilla/readability | ^0.4.4 |
+| @tailwindcss/typography | ^0.5.9 |
+| @trivago/prettier-plugin-sort-imports | ^4.1.1 |
+| @types/jsdom | ^21.1.1 |
+| @types/node | 18.
