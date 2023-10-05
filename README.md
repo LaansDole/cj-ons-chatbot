@@ -2,7 +2,7 @@
 
 ## About
 
-See a [demo]().
+**See a [demo](https://cjgroupchatbot-9s5xwjke.b4a.run/)**
 
 The proposal presented here aims to build on this strong foundation, offering an innovative solution aligned with CJ's commitment to enhancing customer experience and engagement. By leveraging the latest advances in technology Artificial Intelligence and customer behavior analysis, the proposed solution will enable CJ to stay ahead of the competition and continue to provide its customers with an unparalleled entertainment experience.
 
