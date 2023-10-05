@@ -2,15 +2,15 @@
 
 ## About
 
-**See a [demo](https://cjgroupchatbot-9s5xwjke.b4a.run/)**
+See a [demo](https://cjgroupchatbot-9s5xwjke.b4a.run/)**
 
 The proposal presented here aims to build on this strong foundation, offering an innovative solution aligned with CJ's commitment to enhancing customer experience and engagement. By leveraging the latest advances in technology Artificial Intelligence and customer behavior analysis, the proposed solution will enable CJ to stay ahead of the competition and continue to provide its customers with an unparalleled entertainment experience.
 
 ## Deploy
 
-**[Back4App](https://containers.back4app.com/apps/74121533-a0cc-48a9-b8d1-1f702fafa6c6/settings#build-and-deploy)**
-
 Back4app Containers makes building, deploying, and scaling your code simple , so you don't have to worry about DevOps. The platform eliminates the gap between development and production by automating repetitive, non-value tasks and managing the server-side infrastructure for you.
+
+**[Deploy with Back4App](https://www.back4app.com/docs-containers)**
 
 **Docker**
 

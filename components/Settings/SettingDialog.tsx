@@ -73,6 +73,33 @@ export const SettingDialog: FC<Props> = ({ open, onClose }) => {
             </div>
 
             <div className="text-sm font-bold mb-2 text-black dark:text-neutral-200">
+              Language
+            </div>
+
+            <select
+            className={`relative appearance-none rounded-md border-none font-medium text-gray-600 hover:text-gray-900 px-5 py-3 my-3 flex items-center transition duration-1 ease-in-out`}
+            >
+                <option
+                  className='text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out'
+                  value="en"
+                >
+                  English
+                </option>
+                <option
+                  className='text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out'
+                  value="vi"
+                >
+                  Tiếng Việt
+                </option>
+                <option
+                  className='text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out'
+                  value="vi"
+                >
+                  한국어
+                </option>
+            </select>
+
+            <div className="text-sm font-bold mb-2 text-black dark:text-neutral-200">
               {t('Theme')}
             </div>
 
