@@ -34,6 +34,15 @@ import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
 import { MemoizedChatMessage } from './MemoizedChatMessage';
 
+import Image from 'next/image';
+import CJLogoBig from '@/assets/cj-logo-big.svg';
+import CJLogoXL from '@/assets/cj-logo-xl.svg';
+import UserPFPIcon from '@/assets/user-pfp-icon.svg';
+import NotificationIcon from '@/assets/notification-icon.svg';
+import ErrorReportIcon from '@/assets/error-report-icon.svg';
+import LookIcon from '@/assets/look-icon.svg';
+import InfoIcon from '@/assets/info-icon.svg';
+
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
 }
@@ -307,13 +316,13 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
   };
   const throttledScrollDown = throttle(scrollDown, 250);
 
-  // useEffect(() => {
-  //   console.log('currentMessage', currentMessage);
-  //   if (currentMessage) {
-  //     handleSend(currentMessage);
-  //     homeDispatch({ field: 'currentMessage', value: undefined });
-  //   }
-  // }, [currentMessage]);
+  useEffect(() => {
+    console.log('currentMessage', currentMessage);
+    if (currentMessage) {
+      handleSend(currentMessage);
+      homeDispatch({ field: 'currentMessage', value: undefined });
+    }
+  }, [currentMessage]);
 
   useEffect(() => {
     throttledScrollDown();
@@ -349,12 +358,82 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
 
   return (
     <div className="relative flex-1 overflow-hidden bg-white dark:bg-[#343541]">
-      {!(apiKey || serverSideApiKeyIsSet) ? (
-        <div className="mx-auto flex h-full w-[300px] flex-col justify-center space-y-6 sm:w-[600px]">
-          <div className="text-center text-4xl font-bold text-black dark:text-white">
-            Welcome to CJ’s Entertainment and Media ChatBot
+      <div className='flex flex-row px-3'>
+        <div className='flex flex-row gap-x-2 items-center justify-center'>
+          <Image priority src={CJLogoBig} alt="" onClick={() => window.location.replace('https://www.cj.net/')} className='cursor-pointer' />
+          <div className='h-full flex flex-col items-center'>
+            <div className='pb-3.5' />
+            <span className='text-[#FF5A0D] font-semibold text-xl'>AI Assistant</span>
           </div>
         </div>
+        <div className='flex-1' />
+          <div className='flex flex-row gap-x-3'>
+            <Image priority src={NotificationIcon} alt="" className='cursor-pointer' />
+            <Image priority src={ErrorReportIcon} alt="" className='cursor-pointer' />
+            <Image priority src={UserPFPIcon} alt="" className='cursor-pointer' />
+          </div>
+        </div>
+        
+      {!(apiKey || serverSideApiKeyIsSet) ? (
+        <div className="mx-auto w-[900px] flex h-full flex-col items-center space-y-6 pt-10">
+        <Image priority src={CJLogoXL} alt="" onClick={() => window.location.replace('https://www.cj.net/')} className='cursor-pointer' />
+        <div className="text-center text-xl font-bold text-black dark:text-white">
+          Elevate Your Entertainment Experience: Chat with CJ's Chatbot for Personalized Recommendations and Instant Insights into Movies, Music, and More!
+        </div>
+        <div className='flex flex-row justify-between w-full'>
+          <div className='w-[262px] h-[302px] rounded-md bg-[#40414E] p-3 flex flex-col items-center gap-y-5'>
+            <div className='flex flex-row gap-x-2'>
+              <Image priority src={LookIcon} alt="" />
+              <span className='text-xl font-bold text-white'>Search Movies</span>
+            </div>
+            <div className='flex flex-col gap-y-5 '>
+              <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
+                “Recommend comedy movie from the 90s”
+              </div>
+              <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
+                “What are the top films featuring Park Seo-joon?”
+              </div>
+              <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
+              “Tell me about the upcoming superhero movies this year”
+              </div>
+            </div>
+          </div>
+          <div className='w-[262px] h-[302px] rounded-md bg-[#40414E] p-3 flex flex-col items-center gap-y-5'>
+            <div className='flex flex-row gap-x-2'>
+              <Image priority src={InfoIcon} alt="" />
+              <span className='text-xl font-bold text-white'>Movie preview</span>
+            </div>
+            <div className='flex flex-col gap-y-5 '>
+              <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
+                “Tell me more about Parasite and its reviews”
+              </div>
+              <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
+                “What do critics think of the movie 'Parasite'?”
+              </div>
+              <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
+                “How does 'Parasite' rank among drama films?"”
+              </div>
+            </div>
+          </div>
+          <div className='w-[262px] h-[302px] rounded-md bg-[#40414E] p-3 flex flex-col items-center gap-y-5'>
+            <div className='flex flex-row gap-x-2'>
+              <Image priority src={LookIcon} alt="" />
+              <span className='text-xl font-bold text-white'>Personalization</span>
+            </div>
+            <div className='flex flex-col gap-y-5 '>
+              <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
+                “Based on my preferences, what should I watch next?”
+              </div>
+              <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
+                “I enjoyed 'The Housemaid' What other movies are similar?”
+              </div>
+              <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
+                “I love feel-good movie, any recommendations?”
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       ) : modelError ? (
         <ErrorMessageDiv error={modelError} />
       ) : (
@@ -456,24 +535,24 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
               </>
             )}
           </div>
-
-          <ChatInput
-            stopConversationRef={stopConversationRef}
-            textareaRef={textareaRef}
-            onSend={(message, plugin) => {
-              setCurrentMessage(message);
-              handleSend(message, 0, plugin);
-            }}
-            onScrollDownClick={handleScrollDown}
-            onRegenerate={() => {
-              if (currentMessage) {
-                handleSend(currentMessage, 2, null);
-              }
-            }}
-            showScrollDownButton={showScrollDownButton}
-          />
         </>
       )}
+
+      <ChatInput
+        stopConversationRef={stopConversationRef}
+        textareaRef={textareaRef}
+        onSend={(message, plugin) => {
+          setCurrentMessage(message);
+          handleSend(message, 0, plugin);
+        }}
+        onScrollDownClick={handleScrollDown}
+        onRegenerate={() => {
+          if (currentMessage) {
+            handleSend(currentMessage, 2, null);
+          }
+        }}
+        showScrollDownButton={showScrollDownButton}
+      />
     </div>
   );
 });

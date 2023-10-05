@@ -38,11 +38,6 @@ const Promptbar = () => {
     dispatch: promptDispatch,
   } = promptBarContextValue;
 
-  const handleTogglePromptbar = () => {
-    homeDispatch({ field: 'showPromptbar', value: !showPromptbar });
-    localStorage.setItem('showPromptbar', JSON.stringify(!showPromptbar));
-  };
-
   const handleCreatePrompt = () => {
     if (defaultModelId) {
       const newPrompt: Prompt = {
@@ -127,7 +122,6 @@ const Promptbar = () => {
     >
       <Sidebar<Prompt>
         side={'right'}
-        isOpen={showPromptbar}
         addItemButtonTitle={t('New prompt')}
         itemComponent={
           <Prompts
@@ -140,7 +134,6 @@ const Promptbar = () => {
         handleSearchTerm={(searchTerm: string) =>
           promptDispatch({ field: 'searchTerm', value: searchTerm })
         }
-        toggleOpen={handleTogglePromptbar}
         handleCreateItem={handleCreatePrompt}
         handleCreateFolder={() => handleCreateFolder(t('New folder'), 'prompt')}
         handleDrop={handleDrop}
