@@ -1,4 +1,3 @@
-import { IconFileExport, IconSettings } from '@tabler/icons-react';
 import { useContext, useState } from 'react';
 
 import { useTranslation } from 'next-i18next';
@@ -11,8 +10,13 @@ import { Import } from '../../Settings/Import';
 import { Key } from '../../Settings/Key';
 import { SidebarButton } from '../../Sidebar/SidebarButton';
 import ChatbarContext from '../Chatbar.context';
-import { ClearConversations } from './ClearConversations';
 import { PluginKeys } from './PluginKeys';
+
+import Image from 'next/image';
+import CJIcon from '@/assets/cj-icon.svg';
+import LogoutIcon from '@/assets/logout-icon.svg';
+import EnlargeIcon from '@/assets/enlarge-icon.svg';
+import SettingsIcon from '@/assets/settings-icon.svg';
 
 export const ChatbarSettings = () => {
   const { t } = useTranslation('sidebar');
@@ -29,31 +33,32 @@ export const ChatbarSettings = () => {
     dispatch: homeDispatch,
   } = useContext(HomeContext);
 
-  const {
-    handleClearConversations,
-    handleImportConversations,
-    handleExportData,
-    handleApiKeyChange,
-  } = useContext(ChatbarContext);
+  const { handleApiKeyChange } = useContext(ChatbarContext);
 
   return (
     <div className="flex flex-col items-center space-y-1 border-t border-white/20 pt-1 text-sm">
-      {conversations.length > 0 ? (
-        <ClearConversations onClearConversations={handleClearConversations} />
-      ) : null}
-
-      <Import onImport={handleImportConversations} />
+      <SidebarButton
+        text={t('CJ Website')}
+        icon={<Image priority src={CJIcon} alt="" />}
+        onClick={() => window.location.replace('https://www.cj.net/')}
+      />
 
       <SidebarButton
-        text={t('Export data')}
-        icon={<IconFileExport size={18} />}
-        onClick={() => handleExportData()}
+        text={t('Updates & FAQ')}
+        icon={<Image priority src={EnlargeIcon} alt="" />}
+        onClick={() => window.location.replace('https://www.cj.net/')}
       />
 
       <SidebarButton
         text={t('Settings')}
-        icon={<IconSettings size={18} />}
+        icon={<Image priority src={SettingsIcon} alt="" />}
         onClick={() => setIsSettingDialog(true)}
+      />
+
+      <SidebarButton
+        text={t('Log out')}
+        icon={<Image priority src={LogoutIcon} alt="" />}
+        onClick={() => console.log('logout')}
       />
 
       {!serverSideApiKeyIsSet ? (
