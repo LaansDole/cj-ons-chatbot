@@ -254,13 +254,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
         }
       }
     },
-    [
-      apiKey,
-      conversations,
-      pluginKeys,
-      selectedConversation,
-      stopConversationRef,
-    ],
+    [apiKey, conversations, homeDispatch, pluginKeys, selectedConversation, stopConversationRef],
   );
 
   const scrollToBottom = useCallback(() => {
@@ -322,7 +316,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
       handleSend(currentMessage);
       homeDispatch({ field: 'currentMessage', value: undefined });
     }
-  }, [currentMessage]);
+  }, [currentMessage, handleSend, homeDispatch]);
 
   useEffect(() => {
     throttledScrollDown();
@@ -378,7 +372,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
         <div className="mx-auto w-[900px] flex h-full flex-col items-center space-y-6 pt-10">
         <Image priority src={CJLogoXL} alt="" onClick={() => window.location.replace('https://www.cj.net/')} className='cursor-pointer' />
         <div className="text-center text-xl font-bold text-black dark:text-white">
-          Elevate Your Entertainment Experience: Chat with CJ's Chatbot for Personalized Recommendations and Instant Insights into Movies, Music, and More!
+          Elevate Your Entertainment Experience: Chat with CJ Chatbot for Personalized Recommendations and Instant Insights into Movies, Music, and More!
         </div>
         <div className='flex flex-row justify-between w-full'>
           <div className='w-[262px] h-[302px] rounded-md bg-[#40414E] p-3 flex flex-col items-center gap-y-5'>
@@ -408,10 +402,10 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                 “Tell me more about Parasite and its reviews”
               </div>
               <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
-                “What do critics think of the movie 'Parasite'?”
+                “What do critics think of the movie `Parasite`?”
               </div>
               <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
-                “How does 'Parasite' rank among drama films?"”
+                “How does `Parasite` rank among drama films?”
               </div>
             </div>
           </div>
@@ -425,7 +419,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                 “Based on my preferences, what should I watch next?”
               </div>
               <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
-                “I enjoyed 'The Housemaid' What other movies are similar?”
+                “I enjoyed `The Housemaid` What other movies are similar?”
               </div>
               <div className='bg-[#343541] w-full h-[60px] rounded text-md font-medium text-center p-3'>
                 “I love feel-good movie, any recommendations?”
